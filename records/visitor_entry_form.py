@@ -11,10 +11,10 @@ class VisitorsForm(forms.ModelForm):
         # specify fields to be used
         fields = [
             "visitor_name",
+            "phone_number",
             "id_or_passport",
             "organization",
             "visitee",
-            "phone_number",
             "time_in",
             "time_out"
         ]
