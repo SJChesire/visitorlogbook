@@ -38,7 +38,8 @@ class Migration(migrations.Migration):
                 ('id_or_passport', models.CharField(max_length=20)),
                 ('time_in', models.TimeField()),
                 ('time_out', models.TimeField()),
-                ('organization', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='records.organization')),
+                ('organization', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='records'
+                                                                                                   '.organization')), 
                 ('visitee', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='records.visitee')),
             ],
         ),
