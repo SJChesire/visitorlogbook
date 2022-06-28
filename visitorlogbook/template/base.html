@@ -1,0 +1,13 @@
+{% load static %}
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+       <link href="{% static 'css/bootstrap.min.css' %}" >
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <script>alert();</script>
+</head>
+<body>
+    <img src="{% static 'images/spinlogo.png' %}" alt="Logo">
+    {% block content %}{% endblock %}
+</body>
+</html>
