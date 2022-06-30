@@ -27,7 +27,7 @@ class Organization(models.Model):
 class Visitor(models.Model):
     visitor_name = models.CharField (max_length = 60)
     visitee = models.ForeignKey(Visitee, on_delete=models.CASCADE,null=True,blank=True)
-    organization = models.ForeignKey (Organization,  on_delete=models.CASCADE)
+    organization = models.ForeignKey (Organization, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=12)
     id_or_passport = models.CharField (max_length = 20)
     time_in = models.TimeField()
