@@ -17,7 +17,7 @@ class Visitee(models.Model):
 
 class Organization(models.Model):
     organization_name = models.CharField(max_length=60)
-    mobile_number = models.IntegerField()
+    mobile_number = models.CharField(max_length= 12)
 
 
     def __str__(self):
