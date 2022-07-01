@@ -11,8 +11,8 @@ from .visitee_entry_form import VisiteeForm
 from .visitor_entry_form import VisitorsForm
 
 
-def index(request):
-    return HttpResponse("Hello and Welcome to Spin Mobile Limited")
+# def index(request):
+#     return HttpResponse("Hello and Welcome to Spin Mobile Limited")
 
 
 def create_visitor(request):
