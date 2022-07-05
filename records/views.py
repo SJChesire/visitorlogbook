@@ -35,7 +35,7 @@ def create_visitor(request):
         form.save()
 
     context['form'] = form
-    return render(request, "visitor.html", context)
+    return render(request, "./records/visitor.html", context)
 
 
 def retrieve_visitor():
@@ -66,7 +66,7 @@ def create_organization(request):
         form.save()
 
     context['form'] = form
-    return render(request, "organization.html", context)
+    return render(request, "records/organization.html", context)
 
 
 def retrieve_organization():
@@ -99,4 +99,4 @@ def create_visitee(request):
         form.save()
 
     context['form'] = form
-    return render(request, "visitee.html", context)
+    return render(request, "records/visitee.html", context)

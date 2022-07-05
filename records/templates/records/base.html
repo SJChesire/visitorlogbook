@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<!--    <link rel="stylesheet" href="{% static './bootstrap/css/bootstrap.min.css' %}">-->
+    <link rel="stylesheet" href="{% static './css/new_stryles.css' %}">
+    <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+
+<body>
+<header>
+     {% block header %} {% endblock %}
+</header>
+
+    <div id="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
