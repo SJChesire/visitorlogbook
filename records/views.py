@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse
 
-from .models import Visitor, Organization
-from django.http import HttpResponse, HttpResponseRedirect
+from .models import Visitor, Organization, Visitee
+from django.http import HttpResponse, HttpResponseRedirect, request
 
 from .organization_entry_form import OrganizationForm
 from .visitee_entry_form import VisiteeForm
@@ -35,19 +35,47 @@ def create_visitor(request):
         form.save()
 
     context['form'] = form
-    return render(request, "./records/visitor.html", context)
+    return render(request, "records/visitor.html", context)
 
 
-def retrieve_visitor():
-    pass
+def retrieve_visitor(request):
+    visitor = Visitor.objects.all()
+    return render(request, 'records/visitor.html', {'visitor': visitor})
 
 
-def update_visitor():
-    pass
+class Visitors:
+    objects = None
 
 
-def delete_visitor():
-    pass
+def retrieve_visitors(request):
+    visitors = Visitors.objects.all()
+    return render(request, 'records/visitor.html', {'visitors': visitors})
+
+
+def update_visitor(request,pk):
+    visitor = Visitor.objects.get(id=pk)
+    if request.method == 'POST':
+        return redirect('/records')
+
+    context = {
+        'visitor': visitor,
+    }
+
+    return render(request, 'visitor.html', context)
+
+
+def delete_visitor(request,pk):
+    visitor = Visitor.objects.get(id=pk)
+
+    if request.method == 'POST':
+        visitor.delete()
+        return redirect('/records')
+
+    context = {
+        'visitor': visitor,
+    }
+
+    return render(request, 'visitor.html', context)
 
 
 def create_organization(request):
@@ -70,15 +98,43 @@ def create_organization(request):
 
 
 def retrieve_organization():
-  pass
+    organization = Organization.objects.all()
+    return render(request, 'records/organization.html', {'organization': organization})
 
 
-def update_organization():
-    pass
+class Organizations:
+    objects = None
 
 
-def delete_organization():
-    pass
+def retrieve_organizations():
+    organizations = Organizations.objects.all()
+    return render(request, 'records/organization.html', {'organizations': organizations})
+
+
+def update_organization(request,pk):
+    organization = Organization.objects.get(id=pk)
+    if request.method == 'POST':
+        return redirect('/records')
+
+    context = {
+        'organization': organization,
+    }
+
+    return render(request, 'organization.html', context)
+
+
+def delete_organization(request,pk):
+    organization = Organization.objects.get(id=pk)
+
+    if request.method == 'POST':
+        organization.delete()
+        return redirect('/records')
+
+    context = {
+        'organization': organization,
+    }
+
+    return render(request, 'organization.html', context)
 
 
 def create_visitee(request):
@@ -100,3 +156,45 @@ def create_visitee(request):
 
     context['form'] = form
     return render(request, "records/visitee.html", context)
+
+
+def retrieve_visitee():
+    visitee = Visitee.objects.all()
+    return render(request, 'records/visitee.html', {'visitee': visitee})
+
+
+class Visitees:
+    objects = None
+
+
+def retrieve_visitees():
+    visitees = Visitees.objects.all()
+    return render(request, 'records/visitee.html', {'visitees': visitees})
+
+
+def update_visitee(request,pk):
+    visitee = Visitee.objects.get(id=pk)
+    if request.method == 'POST':
+        return redirect('/records')
+
+    context = {
+        'visitee': visitee,
+    }
+
+    return render(request, 'visitee.html', context)
+
+
+def delete_visitee(request,pk):
+    visitee = Visitee.objects.get(id=pk)
+
+    if request.method == 'POST':
+        visitee.delete()
+        return redirect('/records')
+
+    context = {
+        'visitee': visitee,
+    }
+
+    return render(request, 'visitee.html', context)
+
+
