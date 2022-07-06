@@ -3,38 +3,129 @@
 
 {%block title%} VISITOR RECORD {%endblock%}
 {%block header%}
-    <div class="container">
-<h1><i><a href="/">VISITOR BOOK</a></i></h1>
-         </div>
+<!--<div class="container">-->
+<!--<h1><i><a href="/">VISITOR BOOK</a></i></h1>-->
+<!--    </div>-->
+
 {%endblock%}
 {%block content%}
 
 
-<div class = container>
-    <style>
-        body{
-        background-color:#fffff;
-        text-align: center;
-        font-family: Lobster;
-        font-size: 32px;
-        border: 
-        margin: auto #4bf41b solid;
-        padding: 30px 10px 30px 10px;
-        }
 
+    <style>
+<!--        body{-->
+<!--        background-color:#fffff;-->
+<!--        text-align: center;-->
+<!--        font-family: Lobster;-->
+<!--        font-size: 32px;-->
+<!--        border-radius:20px;-->
+<!--        margin: auto #4bf41b solid;-->
+<!--        padding: 30px 10px 30px 10px;-->
+<!--        background-image:url("Downloads/background.jpg");-->
+<!--        }-->
+            legend{
+            float:none !important;
+            padding:inherit !important
+            }
     </style>
 
 
+<div class="row">
+    <div class="col-6 p-5">
+       <form action =" " method="post" id="Visitor book">
+           <fieldset class ="border p-4">
+               <legend class="w-auto" id="legends">Visitors form</legend>
+               {% csrf_token %}
+               {% if form.non_field_errors %}
+               <div class ="alert alert-warning" role="alert">
+                   {{form.non_field_errors }}
+               </div>
+               {% endif %}
+               <div class="form-group mb-3 ">
+            <label for="{{ form.visitor_name.id_for_lable }}" class="form-label">Visitor name:</label>
+            <input type="text" class="form-control" name="{{form.visitor_name.name}}"  id="{{ form.visitor_name.id_for_lable }}" aria-describedby="" placeholder="enter visitor name" >
+        </div>
+                <div class="form-group mb-3">
+            <label for="{{form.phone_number.id_for_lable}}" class="form-label">Phone number:</label>
+            <input type="number" class="form-control" name="{{form.phone_number.name}}" id="{{form.phone_number.id_for_lable}}" placeholder="enter phone number">
+        </div>
+                <div class="form-group mb-3">
+            <label for="{{form.id_or_passport.id_for_lable}}" class="form-label">Id or passport</label>
+            <input type="text" class="form-control" name="{{form.id_or_passport.name}}" id="{{form.id_or_passport.id_for_lable}}" placeholder="enter id number or passport number">
+        </div>
 
-<form method="POST" enctype="multipart/form-data">
 
-    <!-- Security token -->
-    {% csrf_token %}
+                <div class="form-group mb-3">
+            <label for="{{form.organization.id_for_label}}" class="form-label">Organization</label>
+            <select class="form-control" name="{{form.organization.name}}" id="{{form.organization.id_for_label}}">
+                {% for organization in form.organization %}
+                 {{organization}}
+                  {% endfor %}
 
-    <!-- Using the formset -->
-    {{ form.as_p }}
+            </select><span>
+        <a href="/organization/">+</a></span>
+        </div>
+               <div class="form-group mb-3">
+            <label for="{{form.visitee.id_for_label}}" class="form-label">Visitee</label>
+            <select class="form-control" name="{{form.visitee.name}}" id="{{form.visitee.id_for_label}}">
+                {% for visitee in form.visitee %}
+                 {{visitee}}
+                  {% endfor %}
 
-    <input type="submit" value="Submit">
-</form>
+            </select><span>
+        <a href="/visitee/">+</a></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="{{form.time_in.id_for_lable}}" class="form-label">Time_in</label>
+            <input type="time" class="form-control" name="{{form.time_in.name}}" id="{{form.time_in.id_for_lable}}" placeholder="time in">
+        </div>
+               <div class="form-group mb-3">
+            <label for="{{form.time_out.id_for_lable}}" class="form-label">Time_out</label>
+            <input type="time" class="form-control" name="{{form.time_out.name}}" id="{{form.time_out.id_for_lable}}" placeholder="time out">
+        </div>
+
+
+
+
+                <input type="submit" class="btn btn-primary" name="Submit" value="submit">
+           </fieldset>
+       </form>
+    </div>
+    <div class="col-6">
+        <table class="table">
+  <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Visitor Name</th>
+        <th scope="col">Id or passport</th>
+        <th scope="col">Organization</th>
+        <th scope="col">Visitee Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
 </div>
+
 {%endblock%}
