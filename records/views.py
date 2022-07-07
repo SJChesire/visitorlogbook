@@ -48,11 +48,17 @@ class Visitors:
 
 
 def retrieve_visitors(request):
-    visitors = Visitors.objects.all()
-    return render(request, 'records/visitor.html', {'visitors': visitors})
+    visitors = Visitor.objects.all()
+    # visitors= {
+    #     "visitor_name": "Sandra Boinett",
+    #     "id_or_passport": 38775024,
+    #     "organization": "Diesel power",
+    #     "visitee_name": "Shilla Chesire",
+    # }
+    return render(request, 'records/get_all_visitors.html', {'visitors': visitors})
 
 
-def update_visitor(request,pk):
+def update_visitor(request, pk):
     visitor = Visitor.objects.get(id=pk)
     if request.method == 'POST':
         return redirect('/records')
@@ -64,7 +70,7 @@ def update_visitor(request,pk):
     return render(request, 'visitor.html', context)
 
 
-def delete_visitor(request,pk):
+def delete_visitor(request, pk):
     visitor = Visitor.objects.get(id=pk)
 
     if request.method == 'POST':
@@ -111,7 +117,7 @@ def retrieve_organizations():
     return render(request, 'records/organization.html', {'organizations': organizations})
 
 
-def update_organization(request,pk):
+def update_organization(request, pk):
     organization = Organization.objects.get(id=pk)
     if request.method == 'POST':
         return redirect('/records')
@@ -123,7 +129,7 @@ def update_organization(request,pk):
     return render(request, 'organization.html', context)
 
 
-def delete_organization(request,pk):
+def delete_organization(request, pk):
     organization = Organization.objects.get(id=pk)
 
     if request.method == 'POST':
@@ -172,7 +178,7 @@ def retrieve_visitees():
     return render(request, 'records/visitee.html', {'visitees': visitees})
 
 
-def update_visitee(request,pk):
+def update_visitee(request, pk):
     visitee = Visitee.objects.get(id=pk)
     if request.method == 'POST':
         return redirect('/records')
@@ -184,7 +190,7 @@ def update_visitee(request,pk):
     return render(request, 'visitee.html', context)
 
 
-def delete_visitee(request,pk):
+def delete_visitee(request, pk):
     visitee = Visitee.objects.get(id=pk)
 
     if request.method == 'POST':
@@ -196,5 +202,3 @@ def delete_visitee(request,pk):
     }
 
     return render(request, 'visitee.html', context)
-
-
