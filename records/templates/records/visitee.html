@@ -3,24 +3,69 @@
 
 {%block title%} VISITOR RECORD {%endblock%}
 {%block header%}
-    <div class="container">
-<h1><i><a href="/">VISITOR BOOK</a></i></h1>
-         </div>
+<!--<div class="container">-->
+<!--<h1><i><a href="/">VISITOR BOOK</a></i></h1>-->
+<!--    </div>-->
+
 {%endblock%}
 {%block content%}
 
 
 
-<form method="POST" enctype="multipart/form-data">
+    <style>
+<!--        body{-->
+<!--        background-color:#fffff;-->
+<!--        text-align: center;-->
+<!--        font-family: Lobster;-->
+<!--        font-size: 32px;-->
+<!--        border-radius:20px;-->
+<!--        margin: auto #4bf41b solid;-->
+<!--        padding: 30px 10px 30px 10px;-->
+<!--        background-image:url("Downloads/background.jpg");-->
+<!--        }-->
+            legend{
+            float:none !important;
+            padding:inherit !important
+            text-align:center;
+            align:center;
+            color:blue;
+            }
+    </style>
 
-    <!-- Security token -->
-    {% csrf_token %}
 
-    <!-- Using the formset -->
-    {{ form.as_p }}
+<div class="row">
+    <div class="col-6 p-5">
+       <form action =" " method="post" id="Visitor book">
+           <fieldset class ="border p-4">
+               <legend class="w-auto" id="legends">Visitee form</legend>
+               {% csrf_token %}
+               {% if form.non_field_errors %}
+               <div class ="alert alert-warning" role="alert">
+                   {{form.non_field_errors }}
+               </div>
+               {% endif %}
+               <div class="form-group mb-3 ">
+            <label for="{{ form.visitee_name.id_for_lable }}" class="form-label">Visitee name:</label>
+            <input type="text" class="form-control" name="{{form.visitee_name.name}}"  id="{{ form.visitee_name.id_for_lable }}" aria-describedby="" placeholder="enter visitee name" >
+        </div>
+                <div class="form-group mb-3">
+            <label for="{{form.visitee_status.id_for_lable}}" class="form-label">Visitee status:</label>
+            <input type="text" class="form-control" name="{{form.visitee_status.name}}" id="{{form.visitee_status.id_for_lable}}" placeholder="enter visitee status">
+        </div>
+                <div class="form-group mb-3">
+            <label for="{{form.visitor_name.id_for_lable}}" class="form-label">Visitor name</label>
+            <input type="text" class="form-control" name="{{form.visitor_name.name}}" id="{{form.visitor_name.id_for_lable}}" placeholder="enter visitor name">
+        </div>
+               <input type="submit" class="btn btn-primary" name="Submit" value="submit">
+           </fieldset>
+       </form>
+    </div>
 
-    <input type="submit" value="Submit">
-</form>
+        {{visitee}}
+    </div>
+
+
+
 {%endblock%}
 
 
