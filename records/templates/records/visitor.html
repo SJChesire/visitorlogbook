@@ -31,6 +31,7 @@
             color:blue;
             }
 
+
     </style>
 
 
@@ -51,7 +52,7 @@
         </div>
                 <div class="form-group mb-3">
             <label for="{{form.phone_number.id_for_lable}}" class="form-label">Phone number:</label>
-            <input type="number" class="form-control" name="{{form.phone_number.name}}" id="{{form.phone_number.id_for_lable}}" placeholder="enter phone number">
+            <input type="text" class="form-control" name="{{form.phone_number.name}}" id="{{form.phone_number.id_for_lable}}" placeholder="enter phone number">
         </div>
                 <div class="form-group mb-3">
             <label for="{{form.id_or_passport.id_for_lable}}" class="form-label">Id or passport</label>
@@ -61,23 +62,31 @@
 
                 <div class="form-group mb-3">
             <label for="{{form.organization.id_for_label}}" class="form-label">Organization</label>
+                    <div class="input-group">
             <select class="form-control" name="{{form.organization.name}}" id="{{form.organization.id_for_label}}">
                 {% for organization in form.organization %}
                  {{organization}}
                   {% endfor %}
 
-            </select><span>
-        <a href="/sorganization/">+</a></span>
+            </select>
+                        <div class="input-group-addon">
+        <a href="create_organization/">+</a>
+        </div>
         </div>
                <div class="form-group mb-3">
             <label for="{{form.visitee.id_for_label}}" class="form-label">Visitee</label>
+                   <div class="input-group">
             <select class="form-control" name="{{form.visitee.name}}" id="{{form.visitee.id_for_label}}">
                 {% for visitee in form.visitee %}
                  {{visitee}}
                   {% endfor %}
 
-            </select><span>
-        <a href="/visitee/">+</a></span>
+            </select>
+            <div class="input-group-addon">
+                <a href="create_visitee/"> + </a>
+            </div>
+            </div>
+
         </div>
 
         <div class="form-group mb-3">
@@ -89,13 +98,12 @@
             <input type="time" class="form-control" name="{{form.time_out.name}}" id="{{form.time_out.id_for_lable}}" placeholder="time out">
         </div>
 
-
-
-
                 <input type="submit" class="btn btn-primary" name="Submit" value="submit">
            </fieldset>
        </form>
     </div>
+
+
     <div class="col-6">
         <table class="table table-hover">
   <thead>
