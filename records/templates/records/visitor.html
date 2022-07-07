@@ -26,7 +26,11 @@
             legend{
             float:none !important;
             padding:inherit !important
+            text-align:center;
+            align:center;
+            color:blue;
             }
+
     </style>
 
 
@@ -63,7 +67,7 @@
                   {% endfor %}
 
             </select><span>
-        <a href="/organization/">+</a></span>
+        <a href="/sorganization/">+</a></span>
         </div>
                <div class="form-group mb-3">
             <label for="{{form.visitee.id_for_label}}" class="form-label">Visitee</label>
@@ -93,7 +97,7 @@
        </form>
     </div>
     <div class="col-6">
-        <table class="table">
+        <table class="table table-hover">
   <thead>
     <tr>
         <th scope="col">#</th>
