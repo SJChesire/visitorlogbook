@@ -1,10 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "./base.html" %}
+{% load static %}
+
+{%block title%} ALL VISITORS{%endblock%}
+{%block header%}
+<!--<div class="container">-->
+<!--<h1><i><a href="/">VISITOR BOOK</a></i></h1>-->
+<!--    </div>-->
+
+{%endblock%}
+{%block content%}
+
+
+
+    <style>
+<!--        body{-->
+<!--        background-color:#fffff;-->
+<!--        text-align: center;-->
+<!--        font-family: Lobster;-->
+<!--        font-size: 32px;-->
+<!--        border-radius:20px;-->
+<!--        margin: auto #4bf41b solid;-->
+<!--        padding: 30px 10px 30px 10px;-->
+<!--        background-image:url("Downloads/background.jpg");-->
+<!--        }-->
+            legend{
+            float:none !important;
+            padding:inherit !important
+            text-align:center;
+            align:center;
+            color:blue;
+            }
+
+
+    </style>
+
+
+<div class="row">
+<!--    <div class="col-6 p-5">-->
+<!--       <form action ="" id="visitors_book">-->
+<!--           <fieldset class ="border p-4">-->
+<!--               <legend class="w-auto" id="legends">Visitors form</legend>-->
+<!--               {% csrf_token %}-->
+<!--               {% if form.non_field_errors %}-->
+<!--               <div class ="alert alert-warning" role="alert">-->
+<!--                   {{form.non_field_errors }}-->
+<!--               </div>-->
+<!--               {% endif %}-->
+<!--               <div class="form-group mb-3 ">-->
+<!--            <label for="{{ form.visitor_name.id_for_lable }}" class="form-label">Visitor name:</label>-->
+<!--            <input type="text" class="form-control" name="{{form.visitor_name.name}}"  id="{{ form.visitor_name.id_for_lable }}" aria-describedby="" placeholder="enter visitor name" >-->
+<!--        </div>-->
+<!--                <div class="form-group mb-3">-->
+<!--            <label for="{{form.phone_number.id_for_lable}}" class="form-label">Phone number:</label>-->
+<!--            <input type="text" class="form-control" name="{{form.phone_number.name}}" id="{{form.phone_number.id_for_lable}}" placeholder="enter phone number">-->
+<!--        </div>-->
+<!--                <div class="form-group mb-3">-->
+<!--            <label for="{{form.id_or_passport.id_for_lable}}" class="form-label">Id or passport</label>-->
+<!--            <input type="text" class="form-control" name="{{form.id_or_passport.name}}" id="{{form.id_or_passport.id_for_lable}}" placeholder="enter id number or passport number">-->
+<!--        </div>-->
+
+
+<!--                <div class="form-group mb-3">-->
+<!--            <label for="{{form.organization.id_for_label}}" class="form-label">Organization</label>-->
+<!--                    <div class="input-group">-->
+<!--            <select class="form-control" name="{{form.organization.name}}" id="{{form.organization.id_for_label}}">-->
+<!--                {% for organization in form.organization %}-->
+<!--                 {{organization}}-->
+<!--                  {% endfor %}-->
+
+<!--            </select>-->
+<!--                        <div class="input-group-addon">-->
+<!--        <a href="create_organization/">+</a>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--               <div class="form-group mb-3">-->
+<!--            <label for="{{form.visitee.id_for_label}}" class="form-label">Visitee</label>-->
+<!--                   <div class="input-group">-->
+<!--            <select class="form-control" name="{{form.visitee.name}}" id="{{form.visitee.id_for_label}}">-->
+<!--                {% for visitee in form.visitee %}-->
+<!--                 {{visitee}}-->
+<!--                  {% endfor %}-->
+
+<!--            </select>-->
+<!--            <div class="input-group-addon">-->
+<!--                <a href="create_visitee/"> + </a>-->
+<!--            </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--        <div class="form-group mb-3">-->
+<!--            <label for="{{form.time_in.id_for_lable}}" class="form-label">Time_in</label>-->
+<!--            <input type="time" class="form-control" name="{{form.time_in.name}}" id="{{form.time_in.id_for_lable}}" placeholder="time in">-->
+<!--        </div>-->
+<!--               <div class="form-group mb-3">-->
+<!--            <label for="{{form.time_out.id_for_lable}}" class="form-label">Time_out</label>-->
+<!--            <input type="time" class="form-control" name="{{form.time_out.name}}" id="{{form.time_out.id_for_lable}}" placeholder="time out">-->
+<!--        </div>-->
+
+<!--                <input type="submit" class="btn btn-primary" name="Submit" value="submit">-->
+<!--           </fieldset>-->
+<!--       </form>-->
+<!--    </div>-->
+
+
+    <div class="col-6">
+        <table class="table table-hover">
+  <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Visitor Name</th>
+        <th scope="col">Id or passport</th>
+        <th scope="col">Organization</th>
+        <th scope="col">Visitee Name</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for visitor in visitors %}
+    <tr>
+      <th scope="row">{{visitor.id}}</th>
+        <td>{{visitor.visitor_name}}</td>
+        <td>{{visitor.id_or_passport}}</td>
+        <td>{{visitor.organization}}</td>
+        <td>{{visitor.visitee}}</td>
+
+
+    </tr>
+   {% endfor %}
+  </tbody>
+
+
+
+
+<!--        {{visitors}}-->
+    </div>
+
+</div>
+
+{%endblock%}
