@@ -35,6 +35,6 @@ class Visitor(models.Model):
 
 
     def __str__(self):
-        return self.id_or_passport
+        return self.visitor_name
 
 
